@@ -51,11 +51,10 @@ const styles = StyleSheet.create({
     marginRight: 10,
     borderRadius: 4,
     flex: 1, // Make the input field take available space
-    height: 40,
+
   },
   buttonContainer: {
     width: 80, // Set a fixed width for the button container
-    height: 40,
     justifyContent: 'center'
   },
 });

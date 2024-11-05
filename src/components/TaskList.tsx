@@ -10,9 +10,10 @@ type TaskListProps = {
 };
 
 const TaskList: React.FC<TaskListProps> = ({ tasks, onToggleTask, onDeleteTask }) => {
+ console.log("Tasks in TaskList:", tasks);
   const renderItem = ({ item }: { item: Task }) => (
     <View style={styles.taskContainer}>
-      <TouchableOpacity onPress={() => onToggleTask(item.id)}>
+      <TouchableOpacity onPress={() => onToggleTask(item.id)} style={styles.taskTextContainer}>
         <Text style={[styles.taskText, item.completed && styles.completedText]}>
           {item.text}
         </Text>
@@ -22,23 +23,34 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onToggleTask, onDeleteTask }
   );
 
   return (
-    <FlatList
-      data={tasks}
-      keyExtractor={(item) => item.id.toString()}
-      renderItem={renderItem}
-    />
+    <View style={styles.container}>
+      {tasks.length === 0 ? (
+        <Text style={styles.emptyText}>No tasks to show</Text>
+      ) : (
+        <FlatList
+          data={tasks}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={renderItem}
+        />
+      )}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   taskContainer: {
-      flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
+  },
+  taskTextContainer: {
+    flex: 1,
   },
   taskText: {
     fontSize: 16,
@@ -46,6 +58,12 @@ const styles = StyleSheet.create({
   completedText: {
     textDecorationLine: 'line-through',
     color: '#808080',
+  },
+  emptyText: {
+    fontSize: 16,
+    color: '#808080',
+    textAlign: 'center',
+    marginTop: 20,
   },
 });
 
