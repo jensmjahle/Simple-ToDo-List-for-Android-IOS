@@ -10,7 +10,7 @@ type TaskListProps = {
 };
 
 const TaskList: React.FC<TaskListProps> = ({ tasks, onToggleTask, onDeleteTask }) => {
- console.log("Tasks in TaskList:", tasks);
+ //console.log("Tasks in TaskList:", tasks);
   const renderItem = ({ item }: { item: Task }) => (
     <View style={styles.taskContainer}>
       <TouchableOpacity onPress={() => onToggleTask(item.id)} style={styles.taskTextContainer}>

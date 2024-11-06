@@ -17,7 +17,7 @@ const HomeScreen = () => {
       { id: 4, text: 'Vaske klær', timestamp: new Date(), completed: false },
     ];
     setTasks(dummyTasks);
-    console.log("Dummy tasks set:", dummyTasks);
+   // console.log("Dummy tasks set:", dummyTasks);
   }, []);
 
 /*
