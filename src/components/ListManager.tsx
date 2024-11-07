@@ -25,7 +25,7 @@ const ListManager: React.FC<ListManagerProps> = ({ onSelectList, onCreateNewList
   // Function to delete a list
   const deleteList = async (listName: string) => {
     const fileManager = new FileManager();
-    await fileManager.deleteList(listName);
+    await fileManager.deleteList(`${listName}.json`);
     setLists((prevLists) => prevLists.filter((name) => name !== listName));
   };
 
