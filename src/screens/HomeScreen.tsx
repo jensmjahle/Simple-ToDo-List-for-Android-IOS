@@ -3,9 +3,13 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import TaskInput from '../components/TaskInput';
 import TaskList from '../components/TaskList';
 import { Task } from '../types/Task';
-import FileManager from '../services/FileManager';  // Import FileManager
+import FileManager from '../services/FileManager';
 
-const HomeScreen = ({onNavigateToDetails}) => {
+interface HomeScreenProps {
+  selectedListName: string;
+}
+
+const HomeScreen: React.FC<HomeScreenProps> = ({ selectedListName }) => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [isListEmpty, setIsListEmpty] = useState<boolean>(false);  // State to check if no list exists
 
@@ -13,17 +17,20 @@ const HomeScreen = ({onNavigateToDetails}) => {
     // Load tasks when the component mounts
     const loadTasks = async () => {
       const fileManager = new FileManager();  // Initialize FileManager
-      const storedTasks = await fileManager.readTaskList('myTaskList.json');  // Read the first task list from storage
+    const storedTasks = await fileManager.readTaskList(`${selectedListName}.json`);
+
 
       if (storedTasks && storedTasks.length > 0) {
-        setTasks(storedTasks);
-      } else {
-        setIsListEmpty(true);  // No list found, set the flag to true
-      }
-    };
+            setTasks(storedTasks);
+            setIsListEmpty(false);
+          } else {
+            setTasks([]);
+            setIsListEmpty(true);
+          }
+        };
 
-    loadTasks();
-  }, []);
+        loadTasks();
+      }, [selectedListName]);
 
   // Function to add a new task
   const addTask = async (text: string) => {
@@ -38,7 +45,7 @@ const HomeScreen = ({onNavigateToDetails}) => {
 
     // Save the updated tasks list to file
     const fileManager = new FileManager();
-    await fileManager.writeTaskList('myTaskList.json', updatedTasks);
+      await fileManager.writeTaskList(`${selectedListName}.json`, updatedTasks);
   };
 
   // Function to toggle task completion
@@ -50,7 +57,7 @@ const HomeScreen = ({onNavigateToDetails}) => {
 
     // Save the updated tasks list to file
     const fileManager = new FileManager();
-    await fileManager.writeTaskList('myTaskList.json', updatedTasks);
+    await fileManager.writeTaskList(`${selectedListName}.json`, updatedTasks);
   };
 
   // Function to delete a task
@@ -60,24 +67,18 @@ const HomeScreen = ({onNavigateToDetails}) => {
 
     // Save the updated tasks list to file
     const fileManager = new FileManager();
-    await fileManager.writeTaskList('myTaskList.json', updatedTasks);
+    await fileManager.writeTaskList(`${selectedListName}.json`, updatedTasks);
   };
 
-  return (
+ return (
     <View style={styles.container}>
-      <Text style={styles.title}>To-Do List</Text>
-        <Button title="Go to Task Details" onPress={onNavigateToDetails} />
+    {/* List Title */}
+          <Text style={styles.title}>{selectedListName}</Text>
       <View style={styles.listContainer}>
         {isListEmpty ? (
-          // If no list is found, display a message
           <Text style={styles.emptyText}>You need to create a to-do list!</Text>
         ) : (
-          // Otherwise, render the list of tasks
-          <TaskList
-            tasks={tasks}
-            onToggleTask={toggleTaskCompletion}
-            onDeleteTask={deleteTask}
-          />
+          <TaskList tasks={tasks} onToggleTask={toggleTaskCompletion} onDeleteTask={deleteTask} />
         )}
       </View>
       <TaskInput styles={styles.inputContainer} onAddTask={addTask} />
