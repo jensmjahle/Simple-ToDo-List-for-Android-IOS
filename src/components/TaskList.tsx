@@ -1,4 +1,4 @@
-// src/components/TaskList.tsx
+
 import React from 'react';
 import { View, Text, FlatList, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { Task } from '../types/Task';
@@ -10,7 +10,18 @@ type TaskListProps = {
 };
 
 const TaskList: React.FC<TaskListProps> = ({ tasks, onToggleTask, onDeleteTask }) => {
- //console.log("Tasks in TaskList:", tasks);
+  // Sort the tasks based on completion status and timestamp
+  const sortedTasks = tasks
+    .sort((a, b) => {
+      // First, compare the completion status
+      if (a.completed === b.completed) {
+        // If tasks have the same completion status, sort by timestamp in descending order
+        return b.timestamp - a.timestamp;
+      }
+      // Tasks that are not completed (completed: false) should appear first
+      return a.completed ? 1 : -1;
+    });
+
   const renderItem = ({ item }: { item: Task }) => (
     <View style={styles.taskContainer}>
       <TouchableOpacity onPress={() => onToggleTask(item.id)} style={styles.taskTextContainer}>
