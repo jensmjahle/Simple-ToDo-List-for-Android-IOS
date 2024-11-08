@@ -7,7 +7,7 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 function App(): React.JSX.Element {
   const [currentScreen, setCurrentScreen] = useState<'Home' | 'Details'>('Home');
-  const [selectedListName, setSelectedListName] = useState<string>('defaultList');
+  const [selectedListName, setSelectedListName] = useState<string>('');
 
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = { backgroundColor: isDarkMode ? Colors.darker : Colors.lighter };
@@ -24,7 +24,7 @@ function App(): React.JSX.Element {
       {/* Navigation Buttons */}
       <View>
         {currentScreen === 'Home' ? (
-          <Button title="Go to Lists" onPress={() => setCurrentScreen('Details')} />
+          <Button title="Go to My Lists" onPress={() => setCurrentScreen('Details')} />
         ) : (
           <Button title="Back to Home" onPress={() => setCurrentScreen('Home')} />
         )}

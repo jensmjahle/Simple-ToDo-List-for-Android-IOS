@@ -11,9 +11,11 @@ interface HomeScreenProps {
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ selectedListName }) => {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [isListEmpty, setIsListEmpty] = useState<boolean>(false);  // State to check if no list exists
+  //const [isListEmpty, setIsListEmpty] = useState<boolean>(false);  // State to check if no list exists
 
   useEffect(() => {
+    if (!selectedListName) return; //Don't load tasks if no list is selected
+
     // Load tasks when the component mounts
     const loadTasks = async () => {
       const fileManager = new FileManager();  // Initialize FileManager
@@ -22,10 +24,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ selectedListName }) => {
 
       if (storedTasks && storedTasks.length > 0) {
             setTasks(storedTasks);
-            setIsListEmpty(false);
           } else {
             setTasks([]);
-            setIsListEmpty(true);
           }
         };
 
@@ -71,18 +71,23 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ selectedListName }) => {
   };
 
  return (
-    <View style={styles.container}>
-    {/* List Title */}
-          <Text style={styles.title}>{selectedListName}</Text>
-      <View style={styles.listContainer}>
-        {isListEmpty ? (
-          <Text style={styles.emptyText}>You need to create a to-do list!</Text>
+  <View style={styles.container}>
+        {selectedListName ? (
+          <>
+            <Text style={styles.title}>{selectedListName}</Text>
+            <View style={styles.listContainer}>
+              {tasks.length === 0 ? (
+                <Text style={styles.emptyText}>This list has no tasks yet!</Text>
+              ) : (
+                <TaskList tasks={tasks} onToggleTask={toggleTaskCompletion} onDeleteTask={deleteTask} />
+              )}
+            </View>
+            <TaskInput styles={styles.inputContainer} onAddTask={addTask} />
+          </>
         ) : (
-          <TaskList tasks={tasks} onToggleTask={toggleTaskCompletion} onDeleteTask={deleteTask} />
+          <Text style={styles.emptyText}>You need to create or select a to-do list!</Text>
         )}
       </View>
-      <TaskInput styles={styles.inputContainer} onAddTask={addTask} />
-    </View>
   );
 };
 
