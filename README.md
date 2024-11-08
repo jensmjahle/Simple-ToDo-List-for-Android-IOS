@@ -6,17 +6,25 @@ Welcome to the Simple To-Do List app! This app helps you to manage your tasks ef
 
 Here are some screenshots of the app in action:
 
-### 1. Main App Usecase (GIF)
-![Main Screen](./assets/example-gif.gif)
 
-### 2. Create New To-Do Lists (JPG)
-![New List](./assets/example1.jpg)
-
-### 3. Keep Organized With Different To-Do Lists (JPG)
-![All Lists](./assets/example2.jpg)
-
-### 2. View, Complete, Delete And Add Tasks To Your Lists (JPG)
-![Task Overview](./assets/example3.jpg)
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+  <div style="flex: 1 1 45%; text-align: center;">
+    <h4>Main App Usecase (GIF)</h4>
+    <img src="./assets/example-gif.gif" alt="Main Screen" style="width: 100%; height: auto; max-width: 300px;"/>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <h4>Create New To-Do Lists (JPG)</h4>
+    <img src="./assets/example1.jpg" alt="New List" style="width: 100%; height: auto; max-width: 300px;"/>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <h4>Keep Organized With Different To-Do Lists (JPG)</h4>
+    <img src="./assets/example2.jpg" alt="All Lists" style="width: 100%; height: auto; max-width: 300px;"/>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <h4>View, Complete, Delete, And Add Tasks To Your Lists (JPG)</h4>
+    <img src="./assets/example3.jpg" alt="Task Overview" style="width: 100%; height: auto; max-width: 300px;"/>
+  </div>
+</div>
 
 ## Installation
 
