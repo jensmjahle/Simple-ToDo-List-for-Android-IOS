@@ -5,6 +5,11 @@ import TaskList from '../components/TaskList';
 import { Task } from '../types/Task';
 import FileManager from '../services/FileManager';
 
+const generateId = (): number => {
+  return Date.now();
+};
+
+
 interface HomeScreenProps {
   selectedListName: string;
 }
@@ -33,12 +38,15 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ selectedListName }) => {
 
   // Function to add a new task
   const addTask = async (text: string) => {
+    const ID = generateId();
     const newTask: Task = {
-      id: tasks.length + 1,
+        id: ID,
       text,
       completed: false,
       timestamp: new Date(),
     };
+
+console.log('new task ', newTask);
     const updatedTasks = [...tasks, newTask];
     setTasks(updatedTasks);
 
