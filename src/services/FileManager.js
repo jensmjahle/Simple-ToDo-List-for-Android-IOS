@@ -37,6 +37,8 @@ class FileManager {
     }
   }
 
+
+
    // Retrieve all list names (files ending in .json) in the storage directory
     async getAllLists() {
       try {
@@ -47,7 +49,6 @@ class FileManager {
         const listNames = files
           .filter((file) => file.isFile() && file.name.endsWith('.json'))
           .map((file) => file.name.replace('.json', ''));
-
         return listNames; // Return the list of names
       } catch (error) {
         console.error('Error retrieving list names:', error);

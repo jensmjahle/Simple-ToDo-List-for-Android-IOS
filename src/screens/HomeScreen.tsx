@@ -11,7 +11,6 @@ interface HomeScreenProps {
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ selectedListName }) => {
   const [tasks, setTasks] = useState<Task[]>([]);
-  //const [isListEmpty, setIsListEmpty] = useState<boolean>(false);  // State to check if no list exists
 
   useEffect(() => {
     if (!selectedListName) return; //Don't load tasks if no list is selected

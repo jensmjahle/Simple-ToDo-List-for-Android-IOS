@@ -27,6 +27,7 @@ const ListManager: React.FC<ListManagerProps> = ({ onSelectList, onCreateNewList
     const fileManager = new FileManager();
     await fileManager.deleteList(`${listName}.json`);
     setLists((prevLists) => prevLists.filter((name) => name !== listName));
+
   };
 
   const renderItem = ({ item }: { item: string }) => (

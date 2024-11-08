@@ -1,4 +1,4 @@
-// App.tsx
+
 import React, { useState } from 'react';
 import { SafeAreaView, StatusBar, useColorScheme, StyleSheet, Button, View } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
@@ -7,7 +7,7 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 function App(): React.JSX.Element {
   const [currentScreen, setCurrentScreen] = useState<'Home' | 'Details'>('Home');
-  const [selectedListName, setSelectedListName] = useState<string>('');
+  const [selectedListName, setSelectedListName] = useState<string>('Quick Notes');
 
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = { backgroundColor: isDarkMode ? Colors.darker : Colors.lighter };
@@ -26,7 +26,7 @@ function App(): React.JSX.Element {
         {currentScreen === 'Home' ? (
           <Button title="Go to My Lists" onPress={() => setCurrentScreen('Details')} />
         ) : (
-          <Button title="Back to Home" onPress={() => setCurrentScreen('Home')} />
+        <View/>
         )}
       </View>
 
