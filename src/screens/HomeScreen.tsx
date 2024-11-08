@@ -22,7 +22,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ selectedListName }) => {
 
     // Load tasks when the component mounts
     const loadTasks = async () => {
-      const fileManager = new FileManager();  // Initialize FileManager
+      const fileManager = new FileManager();
     const storedTasks = await fileManager.readTaskList(`${selectedListName}.json`);
 
 
@@ -46,7 +46,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ selectedListName }) => {
       timestamp: new Date(),
     };
 
-console.log('new task ', newTask);
+    console.log('new task ', newTask);
     const updatedTasks = [...tasks, newTask];
     setTasks(updatedTasks);
 
