@@ -6,25 +6,28 @@ Welcome to the Simple To-Do List app! This app helps you to manage your tasks ef
 
 Here are some screenshots of the app in action:
 
-
-<div style="display: flex; flex-wrap: wrap; gap: 20px;">
-  <div style="flex: 1 1 45%; text-align: center;">
-    <h4>Main App Usecase (GIF)</h4>
-    <img src="./assets/example-gif.gif" alt="Main Screen" style="width: 100%; height: auto; max-width: 300px;"/>
-  </div>
-  <div style="flex: 1 1 45%; text-align: center;">
-    <h4>Create New To-Do Lists (JPG)</h4>
-    <img src="./assets/example1.jpg" alt="New List" style="width: 100%; height: auto; max-width: 300px;"/>
-  </div>
-  <div style="flex: 1 1 45%; text-align: center;">
-    <h4>Keep Organized With Different To-Do Lists (JPG)</h4>
-    <img src="./assets/example2.jpg" alt="All Lists" style="width: 100%; height: auto; max-width: 300px;"/>
-  </div>
-  <div style="flex: 1 1 45%; text-align: center;">
-    <h4>View, Complete, Delete, And Add Tasks To Your Lists (JPG)</h4>
-    <img src="./assets/example3.jpg" alt="Task Overview" style="width: 100%; height: auto; max-width: 300px;"/>
-  </div>
-</div>
+<table>
+  <tr>
+    <td style="text-align:center;">
+      <h4>Main App Usecase (GIF)</h4>
+      <img src="./assets/example-gif.gif" alt="Main Screen" width="100%" height="auto"/>
+    </td>
+    <td style="text-align:center;">
+      <h4>Create New To-Do Lists (JPG)</h4>
+      <img src="./assets/example1.jpg" alt="New List" width="100%" height="auto"/>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">
+      <h4>Keep Organized With Different To-Do Lists (JPG)</h4>
+      <img src="./assets/example2.jpg" alt="All Lists" width="100%" height="auto"/>
+    </td>
+    <td style="text-align:center;">
+      <h4>View, Complete, Delete, And Add Tasks To Your Lists (JPG)</h4>
+      <img src="./assets/example3.jpg" alt="Task Overview" width="100%" height="auto"/>
+    </td>
+  </tr>
+</table>
 
 ## Installation
 
