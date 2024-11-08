@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, TextInput, Button, StyleSheet, KeyboardAvoidingView, Keyboard, Platform } from 'react-native';
 
 type TaskInputProps = {
   onAddTask: (taskText: string) => void;
@@ -15,16 +15,25 @@ const TaskInput: React.FC<TaskInputProps> = ({ onAddTask }) => {
     }
   };
 
+    const handleSubmitEditing = (event: any) => {
+      handleAddTask();
+ event.preventDefault();
+    };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.keyboardAvoidingContainer}>
+
       <View style={styles.container}>
         <TextInput
           style={styles.input}
           placeholder="Add a new task"
           value={taskText}
           onChangeText={setTaskText}
+          onSubmitEditing={handleSubmitEditing}
+          returnKeyType="done"
+          blurOnSubmit={false}
         />
         <View style={styles.buttonContainer}>
           <Button title="Add" onPress={handleAddTask} />
