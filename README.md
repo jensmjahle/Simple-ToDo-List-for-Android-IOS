@@ -69,6 +69,7 @@ To run this app, you'll need the following installed on your system:
 4. **Set up Android Studio and Emulator**:
     - Open Android Studio and set up an Android Virtual Device (AVD) or connect a physical Android device via USB.
     - To verify that the Android emulator is set up correctly, run:
+   > **Note:** Recomended emulator is a Google Pixel 9 running Android 15.0
       ```bash
       adb devices
       ```
