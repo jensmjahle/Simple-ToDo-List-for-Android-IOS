@@ -78,7 +78,7 @@ To run this app, you'll need the following installed on your system:
 5. **Start the Metro Server**:
     Start the Metro server by running the following command in the root folder:
     ```bash
-    npm run android
+    npm start
     ```
 
 6. **Start the app on Android**:
