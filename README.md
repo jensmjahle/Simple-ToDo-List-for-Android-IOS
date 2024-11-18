@@ -75,8 +75,14 @@ To run this app, you'll need the following installed on your system:
       ```
     This should list the connected emulator or device.
 
-5. **Start the app on Android**:
-    Once the emulator is running (or a physical device is connected), run the following to start the app:
+5. **Start the Metro Server**:
+    Start the Metro server by running the following command in the root folder:
+    ```bash
+    npm run android
+    ```
+
+6. **Start the app on Android**:
+   Once the emulator is running (or a physical device is connected), run the following in a separate terminal than the Metro server to start the app:
     ```bash
     npm run android
     ```
